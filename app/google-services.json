@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "479891565706",
+    "project_id": "tic-toc-game-654c4",
+    "storage_bucket": "tic-toc-game-654c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479891565706:android:31c6f4f1e8c8e7777a1173",
+        "android_client_info": {
+          "package_name": "com.example.tic_tac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479891565706-u6e4qc6e6hvirfr01b8tuggbh1ddg2e8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAXoxFy3aIFIdo1gML3gzqLlQnmf0CqGI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479891565706-u6e4qc6e6hvirfr01b8tuggbh1ddg2e8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
