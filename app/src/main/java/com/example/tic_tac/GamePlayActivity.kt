@@ -1,13 +1,15 @@
 package com.example.tic_tac
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_game_play.*
-import kotlin.system.exitProcess
 
 var playerTurn = true
 
@@ -154,17 +156,23 @@ class GamePlayActivity : AppCompatActivity() {
             buttonDisabled()
             disabledReset()
 
-            val build = AlertDialog.Builder(this)
-            build.setTitle("Game over")
-            build.setMessage("Player 1 Wins \n\n" + "Do you want to play again")
-            build.setPositiveButton("Ok") { dialog, which ->
-                reset()
-            }
-            build.setNegativeButton("Exit") { dialog, which ->
-                exitProcess(1)
-//                finish()
-            }
-            build.show()
+            val mDialogView = LayoutInflater.from(this).inflate(R.layout.player1_win,null)
+            val plDialog = AlertDialog.Builder(this)
+            plDialog.setView(mDialogView)
+            val mAlertDialog = plDialog.show()
+            mAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//
+//            val build = AlertDialog.Builder(this)
+//            build.setTitle("Game over")
+//            build.setMessage("Player 1 Wins \n\n" + "Do you want to play again")
+//            build.setPositiveButton("Ok") { dialog, which ->
+//                reset()
+//            }
+//            build.setNegativeButton("Exit") { dialog, which ->
+//                exitProcess(1)
+////                finish()
+//            }
+//            build.show()
             return 1
         } else if (player2.contains(1) && player2.contains(2) && player2.contains(3) ||
             player2.contains(1) && player2.contains(4) && player2.contains(7) ||
@@ -178,30 +186,40 @@ class GamePlayActivity : AppCompatActivity() {
             player2Count += 1
             buttonDisabled()
             disabledReset()
-            val build = AlertDialog.Builder(this)
-            build.setTitle("Game over")
-            build.setMessage("Player 2 Wins \n\n" + "Do you want to play again")
-            build.setPositiveButton("Ok") { dialog, which ->
-                reset()
-            }
-            build.setNegativeButton("Exit") { dialog, which ->
-                exitProcess(1)
-            }
-            build.show()
+            val mDialogView = LayoutInflater.from(this).inflate(R.layout.player2_win,null)
+            val plDialog = AlertDialog.Builder(this)
+            plDialog.setView(mDialogView)
+            val mAlertDialog = plDialog.show()
+            mAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//            val build = AlertDialog.Builder(this)
+//            build.setTitle("Game over")
+//            build.setMessage("Player 2 Wins \n\n" + "Do you want to play again")
+//            build.setPositiveButton("Ok") { dialog, which ->
+//                reset()
+//            }
+//            build.setNegativeButton("Exit") { dialog, which ->
+//                exitProcess(1)
+//            }
+//            build.show()
             return 1
         } else if (emptyCells.contains(1) && emptyCells.contains(2) && emptyCells.contains(3) && emptyCells.contains(4) && emptyCells.contains(5) && emptyCells.contains(6) && emptyCells.contains(7) && emptyCells.contains(8) && emptyCells.contains(9)) {
 
+            val mDialogView = LayoutInflater.from(this).inflate(R.layout.player_draw,null)
+            val plDialog = AlertDialog.Builder(this)
+            plDialog.setView(mDialogView)
+            val mAlertDialog = plDialog.show()
+            mAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-            val build = AlertDialog.Builder(this)
-            build.setTitle("Game draw")
-            build.setMessage("Game draw \n\n" + "Do you want to play again")
-            build.setPositiveButton("Ok") { dialog, which ->
-                reset()
-            }
-            build.setNegativeButton("Exit") { dialog, which ->
-                exitProcess(1)
-            }
-            build.show()
+//            val build = AlertDialog.Builder(this)
+//            build.setTitle("Game draw")
+//            build.setMessage("Game draw \n\n" + "Do you want to play again")
+//            build.setPositiveButton("Ok") { dialog, which ->
+//                reset()
+//            }
+//            build.setNegativeButton("Exit") { dialog, which ->
+//                exitProcess(1)
+//            }
+//            build.show()
             return 1
         }
         return 0

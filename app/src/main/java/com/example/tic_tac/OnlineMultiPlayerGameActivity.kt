@@ -1,8 +1,11 @@
 package com.example.tic_tac
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -127,6 +130,7 @@ class OnlineMultiPlayerGameActivity : AppCompatActivity() {
             player1Count += 1
             buttonDisabled()
             disableReset()
+
             val build = AlertDialog.Builder(this)
             build.setTitle("Game over")
             build.setMessage("Player 1 Wins \n\n" + "Do you want to play again")
@@ -168,7 +172,6 @@ class OnlineMultiPlayerGameActivity : AppCompatActivity() {
             && emptyCells.contains(4) && emptyCells.contains(5) && emptyCells.contains(6)
             && emptyCells.contains(7) && emptyCells.contains(8) && emptyCells.contains(9)
         ) {
-
 
             val build = AlertDialog.Builder(this)
             build.setTitle("Game draw")
@@ -279,7 +282,6 @@ class OnlineMultiPlayerGameActivity : AppCompatActivity() {
                 R.id.idBtnBox7 -> cellOnLine = 7
                 R.id.idBtnBox8 -> cellOnLine = 8
                 R.id.idBtnBox9 -> cellOnLine = 9
-                else -> {cellOnLine = 0}
             }
             playerTurn = false
             Handler().postDelayed(Runnable { playerTurn = true }, 600)

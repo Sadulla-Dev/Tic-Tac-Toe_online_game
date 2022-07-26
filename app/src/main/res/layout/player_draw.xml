@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="10dp"
+    android:layout_margin="10dp"
+    android:background="@color/white">
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+        <TextView
+            android:padding="15dp"
+            android:background="#009BE8"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="Draw !!"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="The game is drawn, Please Play again...!!"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:textSize="19dp"
+                android:textColor="@color/black"
+                android:textStyle="bold|normal"
+                android:layout_marginBottom="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/cannel_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40sp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="50dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bac_button"
+                    android:text="Cancel"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/ok_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40sp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bac_button"
+                    android:layout_weight="1"
+                    android:text="Ok" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

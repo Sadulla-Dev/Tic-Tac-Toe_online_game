@@ -1,62 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F8F8"
     tools:context=".OnlineCodeGeneratorActivity">
 
 
-
-    <TextView
-        android:id="@+id/idTvHead"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tic Tac Toe"
-        android:textAlignment="center"
-        android:layout_centerHorizontal="true"
-        android:padding="10dp"
-        android:textSize="25sp"
-        android:textColor="@color/black"
-        android:layout_marginTop="50dp"/>
-
     <EditText
         android:id="@+id/idEditCode"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bac_dialog"
+        android:hint="Enter code"
+        android:maxLength="7"
+        android:maxLines="1"
+        android:padding="10dp"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.452" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/idTvHead"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="20dp"
-        android:hint="Enter code"/>
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idEditCode"
+        app:layout_constraintVertical_bias="0.078"
+        tools:layout_editor_absoluteX="16dp">
 
-    <Button
-        android:id="@+id/idBtnCreate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create"
-        android:layout_below="@id/idEditCode"
-        android:layout_centerHorizontal="true"
-        android:textAllCaps="false"
-        android:layout_marginTop="20dp"/>
-    <Button
-        android:id="@+id/idBtnJoin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Join"
-        android:layout_below="@id/idBtnCreate"
-        android:layout_centerHorizontal="true"
-        android:textAllCaps="false"
-        android:layout_marginTop="20dp"/>
+        <Button
+            android:id="@+id/idBtnJoin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/bac_button_white"
+            android:text="Join"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
 
+        <Button
+            android:id="@+id/idBtnCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/bac_button"
+            android:padding="10dp"
+            android:text="Create"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
 
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/idPBLoading"
-        android:layout_centerInParent="true"
-        android:visibility="gone"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints" />
 
 
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

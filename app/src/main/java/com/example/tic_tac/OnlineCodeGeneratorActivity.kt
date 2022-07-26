@@ -33,7 +33,7 @@ class OnlineCodeGeneratorActivity : AppCompatActivity() {
             code = idEditCode.text.toString()
             idBtnCreate.visibility = View.GONE
             idBtnJoin.visibility = View.GONE
-            idTvHead.visibility = View.GONE
+//            idTvHead.visibility = View.GONE
             idEditCode.visibility = View.GONE
             idBtnCreate.visibility = View.GONE
             idPBLoading.visibility = View.VISIBLE
@@ -47,7 +47,7 @@ class OnlineCodeGeneratorActivity : AppCompatActivity() {
                                 if (check == true) {
                                     idBtnCreate.visibility = View.VISIBLE
                                     idBtnJoin.visibility = View.VISIBLE
-                                    idTvHead.visibility = View.VISIBLE
+//                                    idTvHead.visibility = View.VISIBLE
                                     idEditCode.visibility = View.VISIBLE
                                     idPBLoading.visibility = View.GONE
                                 } else {
@@ -74,7 +74,7 @@ class OnlineCodeGeneratorActivity : AppCompatActivity() {
             } else {
                 idBtnCreate.visibility = View.VISIBLE
                 idBtnJoin.visibility = View.VISIBLE
-                idTvHead.visibility = View.VISIBLE
+//                idTvHead.visibility = View.VISIBLE
                 idEditCode.visibility = View.VISIBLE
                 idPBLoading.visibility = View.GONE
                 Toast.makeText(this, "Please enter a valid code", Toast.LENGTH_SHORT).show()
@@ -89,7 +89,7 @@ class OnlineCodeGeneratorActivity : AppCompatActivity() {
             if (code != "null" && code != "") {
                 idBtnCreate.visibility = View.GONE
                 idBtnJoin.visibility = View.GONE
-                idTvHead.visibility = View.GONE
+//                idTvHead.visibility = View.GONE
                 idEditCode.visibility = View.GONE
                 idPBLoading.visibility = View.VISIBLE
 
@@ -104,13 +104,13 @@ class OnlineCodeGeneratorActivity : AppCompatActivity() {
                                     accepted()
                                     idBtnCreate.visibility = View.VISIBLE
                                     idBtnJoin.visibility = View.VISIBLE
-                                    idTvHead.visibility = View.VISIBLE
+//                                    idTvHead.visibility = View.VISIBLE
                                     idEditCode.visibility = View.VISIBLE
                                     idPBLoading.visibility = View.GONE
                                 }else{
                                     idBtnCreate.visibility = View.VISIBLE
                                     idBtnJoin.visibility = View.VISIBLE
-                                    idTvHead.visibility = View.VISIBLE
+//                                    idTvHead.visibility = View.VISIBLE
                                     idEditCode.visibility = View.VISIBLE
                                     idPBLoading.visibility = View.GONE
                                     Toast.makeText(this@OnlineCodeGeneratorActivity, "Invalid Code", Toast.LENGTH_SHORT).show()
@@ -135,7 +135,7 @@ class OnlineCodeGeneratorActivity : AppCompatActivity() {
         idBtnCreate.visibility = View.VISIBLE
         idBtnJoin.visibility = View.VISIBLE
         idEditCode.visibility = View.VISIBLE
-        idTvHead.visibility = View.VISIBLE
+//        idTvHead.visibility = View.VISIBLE
         idPBLoading.visibility = View.GONE
     }
 
