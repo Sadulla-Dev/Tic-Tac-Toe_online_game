@@ -9,11 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
-import kotlinx.android.synthetic.main.activity_game_play.*
+import com.example.tic_tac.databinding.ActivityGamePlayBinding
 
 var playerTurn = true
 
 class GamePlayActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityGamePlayBinding
     var player1Count = 0
     var player2Count = 0
     var player1 = ArrayList<Int>()
@@ -22,9 +23,10 @@ class GamePlayActivity : AppCompatActivity() {
     var activityUser = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_game_play)
+        binding = ActivityGamePlayBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        idBtnReset.setOnClickListener {
+        binding.idBtnReset.setOnClickListener {
             reset()
         }
     }
@@ -38,23 +40,23 @@ class GamePlayActivity : AppCompatActivity() {
         for (i in 1..9) {
             var buttonSelected: Button?
             buttonSelected = when (i) {
-                1 -> idBtnBox1
-                2 -> idBtnBox2
-                3 -> idBtnBox3
-                4 -> idBtnBox4
-                5 -> idBtnBox5
-                6 -> idBtnBox6
-                7 -> idBtnBox7
-                8 -> idBtnBox8
-                9 -> idBtnBox9
+                1 -> binding.idBtnBox1
+                2 -> binding.idBtnBox2
+                3 -> binding.idBtnBox3
+                4 -> binding.idBtnBox4
+                5 -> binding.idBtnBox5
+                6 -> binding.idBtnBox6
+                7 -> binding.idBtnBox7
+                8 -> binding.idBtnBox8
+                9 -> binding.idBtnBox9
                 else -> {
-                    idBtnBox1
+                    binding.idBtnBox1
                 }
             }
             buttonSelected.isEnabled = true
             buttonSelected.text = ""
-            user1.text = player1Count.toString()
-            user2.text = player2Count.toString()
+            binding.user1.text = player1Count.toString()
+            binding.user2.text = player2Count.toString()
         }
     }
 
@@ -115,17 +117,17 @@ class GamePlayActivity : AppCompatActivity() {
             robot()
         } else {
             val buttonSelected = when (rnd) {
-                1 -> idBtnBox1
-                2 -> idBtnBox2
-                3 -> idBtnBox3
-                4 -> idBtnBox4
-                5 -> idBtnBox5
-                6 -> idBtnBox6
-                7 -> idBtnBox7
-                8 -> idBtnBox8
-                9 -> idBtnBox9
+                1 -> binding.idBtnBox1
+                2 -> binding.idBtnBox2
+                3 -> binding.idBtnBox3
+                4 -> binding.idBtnBox4
+                5 -> binding.idBtnBox5
+                6 -> binding.idBtnBox6
+                7 -> binding.idBtnBox7
+                8 -> binding.idBtnBox8
+                9 -> binding.idBtnBox9
                 else -> {
-                    idBtnBox1
+                    binding.idBtnBox1
                 }
             }
             emptyCells.add(rnd)
@@ -234,29 +236,29 @@ class GamePlayActivity : AppCompatActivity() {
         for (i in 1..9) {
             var buttonSelected: Button?
             buttonSelected = when (i) {
-                1 -> idBtnBox1
-                2 -> idBtnBox2
-                3 -> idBtnBox3
-                4 -> idBtnBox4
-                5 -> idBtnBox5
-                6 -> idBtnBox6
-                7 -> idBtnBox7
-                8 -> idBtnBox8
-                9 -> idBtnBox9
+                1 -> binding.idBtnBox1
+                2 -> binding.idBtnBox2
+                3 -> binding.idBtnBox3
+                4 -> binding.idBtnBox4
+                5 -> binding.idBtnBox5
+                6 -> binding.idBtnBox6
+                7 -> binding.idBtnBox7
+                8 -> binding.idBtnBox8
+                9 -> binding.idBtnBox9
                 else -> {
-                    idBtnBox1
+                    binding.idBtnBox1
                 }
             }
             buttonSelected.isEnabled = true
             buttonSelected.text = ""
-            user1.text = player1Count.toString()
-            user2.text = player2Count.toString()
+            binding.user1.text = player1Count.toString()
+            binding.user2.text = player2Count.toString()
 
         }
     }
 
     private fun disabledReset() {
-        idBtnReset.isEnabled = false
-        Handler().postDelayed(Runnable { idBtnReset.isEnabled = true }, 2200)
+        binding.idBtnReset.isEnabled = false
+        Handler().postDelayed(Runnable { binding.idBtnReset.isEnabled = true }, 2200)
     }
 }

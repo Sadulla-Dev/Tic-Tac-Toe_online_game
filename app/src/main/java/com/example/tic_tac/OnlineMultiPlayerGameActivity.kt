@@ -1,25 +1,24 @@
 package com.example.tic_tac
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.tic_tac.databinding.ActivityOnlineMultiPlayerGameBinding
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_online_multi_player_game.*
 import kotlin.system.exitProcess
 
 var isMyMove = isCodeMaker
 
 class OnlineMultiPlayerGameActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityOnlineMultiPlayerGameBinding
     var player1Count = 0
     var player2Count = 0
     var player1 = ArrayList<Int>()
@@ -28,9 +27,10 @@ class OnlineMultiPlayerGameActivity : AppCompatActivity() {
     var activityUser = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_online_multi_player_game)
+        binding = ActivityOnlineMultiPlayerGameBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        idBtnReset.setOnClickListener {
+        binding.idBtnReset.setOnClickListener {
             reset()
         }
 
@@ -75,22 +75,22 @@ class OnlineMultiPlayerGameActivity : AppCompatActivity() {
         if (move) {
             var buttonSelected: Button?
             buttonSelected = when (data.toInt()) {
-                1 -> idBtnBox1
-                2 -> idBtnBox2
-                3 -> idBtnBox3
-                4 -> idBtnBox4
-                5 -> idBtnBox5
-                6 -> idBtnBox6
-                7 -> idBtnBox7
-                8 -> idBtnBox8
-                9 -> idBtnBox9
+                1 -> binding.idBtnBox1
+                2 -> binding.idBtnBox2
+                3 -> binding.idBtnBox3
+                4 -> binding.idBtnBox4
+                5 -> binding.idBtnBox5
+                6 -> binding.idBtnBox6
+                7 -> binding.idBtnBox7
+                8 -> binding.idBtnBox8
+                9 -> binding.idBtnBox9
                 else -> {
-                    idBtnBox1
+                    binding.idBtnBox1
                 }
             }
             buttonSelected.text = "O"
 
-            idTvTurn.text = "Turn: player 1"
+            binding.idTvTurn.text = "Turn: player 1"
             buttonSelected.setTextColor(resources.getColor(R.color.red))
             player2.add(data.toInt())
             emptyCells.add(data.toInt())
@@ -104,7 +104,7 @@ class OnlineMultiPlayerGameActivity : AppCompatActivity() {
         if (activityUser == 1) {
             buttonSelected.text = "X"
             emptyCells.remove(currCell)
-            idTvTurn.text = "Turn: player2"
+            binding.idTvTurn.text = "Turn: player2"
             buttonSelected.setTextColor(resources.getColor(R.color.green))
             player1.add(currCell)
             emptyCells.add(currCell)
@@ -198,23 +198,23 @@ class OnlineMultiPlayerGameActivity : AppCompatActivity() {
         for (i in 1..9) {
             var buttonSelected: Button?
             buttonSelected = when (i) {
-                1 -> idBtnBox1
-                2 -> idBtnBox2
-                3 -> idBtnBox3
-                4 -> idBtnBox4
-                5 -> idBtnBox5
-                6 -> idBtnBox6
-                7 -> idBtnBox7
-                8 -> idBtnBox8
-                9 -> idBtnBox9
+                1 -> binding.idBtnBox1
+                2 -> binding.idBtnBox2
+                3 -> binding.idBtnBox3
+                4 -> binding.idBtnBox4
+                5 -> binding.idBtnBox5
+                6 -> binding.idBtnBox6
+                7 -> binding.idBtnBox7
+                8 -> binding.idBtnBox8
+                9 -> binding.idBtnBox9
                 else -> {
-                    idBtnBox1
+                    binding.idBtnBox1
                 }
             }
             buttonSelected.isEnabled = true
             buttonSelected.text = ""
-            user1.text = player1Count.toString()
-            user2.text = player2Count.toString()
+            binding.user1.text = player1Count.toString()
+            binding.user2.text = player2Count.toString()
             if (isCodeMaker) {
                 FirebaseDatabase.getInstance().reference.child("data").child(code).removeValue()
 
@@ -225,17 +225,17 @@ class OnlineMultiPlayerGameActivity : AppCompatActivity() {
     private fun buttonDisabled() {
         for (i in 1..9) {
             val buttonSelected = when (i) {
-                1 -> idBtnBox1
-                2 -> idBtnBox2
-                3 -> idBtnBox3
-                4 -> idBtnBox4
-                5 -> idBtnBox5
-                6 -> idBtnBox6
-                7 -> idBtnBox7
-                8 -> idBtnBox8
-                9 -> idBtnBox9
+                1 -> binding.idBtnBox1
+                2 -> binding.idBtnBox2
+                3 -> binding.idBtnBox3
+                4 -> binding.idBtnBox4
+                5 -> binding.idBtnBox5
+                6 -> binding.idBtnBox6
+                7 -> binding.idBtnBox7
+                8 -> binding.idBtnBox8
+                9 -> binding.idBtnBox9
                 else -> {
-                    idBtnBox1
+                     binding.idBtnBox1
                 }
             }
             if (buttonSelected.isEnabled == true) {
@@ -251,8 +251,8 @@ class OnlineMultiPlayerGameActivity : AppCompatActivity() {
     }
 
     fun disableReset() {
-        idBtnReset.isEnabled = false
-        Handler().postDelayed(Runnable { idBtnReset.isEnabled = true }, 2000)
+        binding.idBtnReset.isEnabled = false
+        Handler().postDelayed(Runnable { binding.idBtnReset.isEnabled = true }, 2000)
     }
 
     fun updateDatabase(cellId: Int) {

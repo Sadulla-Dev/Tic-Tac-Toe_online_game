@@ -7,11 +7,11 @@ import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import androidx.core.os.postDelayed
+import com.example.tic_tac.databinding.ActivityOnlineCodeGeneratorBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.activity_online_code_generator.*
 
 var isCodeMaker = true
 var code = "null"
@@ -20,23 +20,24 @@ var checkTemp = true
 var keyValue: String = "null"
 
 class OnlineCodeGeneratorActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityOnlineCodeGeneratorBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_online_code_generator)
+        binding = ActivityOnlineCodeGeneratorBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        idBtnCreate.setOnClickListener {
+        binding.idBtnCreate.setOnClickListener {
 
             code = "null"
             codeFound = false
             checkTemp = true
             keyValue = "null"
-            code = idEditCode.text.toString()
-            idBtnCreate.visibility = View.GONE
-            idBtnJoin.visibility = View.GONE
-//            idTvHead.visibility = View.GONE
-            idEditCode.visibility = View.GONE
-            idBtnCreate.visibility = View.GONE
-            idPBLoading.visibility = View.VISIBLE
+            code = binding.idEditCode.text.toString()
+            binding.idBtnCreate.visibility = View.GONE
+            binding.idBtnJoin.visibility = View.GONE
+            binding.idEditCode.visibility = View.GONE
+            binding.idBtnCreate.visibility = View.GONE
+            binding.idPBLoading.visibility = View.VISIBLE
             if (code != "null" && code != "") {
                 isCodeMaker = true
                 FirebaseDatabase.getInstance().reference.child("codes")
@@ -45,11 +46,10 @@ class OnlineCodeGeneratorActivity : AppCompatActivity() {
                             var check = isValueAvaliable(snapshot, code)
                             Handler().postDelayed({
                                 if (check == true) {
-                                    idBtnCreate.visibility = View.VISIBLE
-                                    idBtnJoin.visibility = View.VISIBLE
-//                                    idTvHead.visibility = View.VISIBLE
-                                    idEditCode.visibility = View.VISIBLE
-                                    idPBLoading.visibility = View.GONE
+                                    binding.idBtnCreate.visibility = View.VISIBLE
+                                    binding.idBtnJoin.visibility = View.VISIBLE
+                                    binding.idEditCode.visibility = View.VISIBLE
+                                    binding.idPBLoading.visibility = View.GONE
                                 } else {
                                     FirebaseDatabase.getInstance().reference.child("codes").push()
                                         .setValue(code)
@@ -72,26 +72,24 @@ class OnlineCodeGeneratorActivity : AppCompatActivity() {
                         }
                     })
             } else {
-                idBtnCreate.visibility = View.VISIBLE
-                idBtnJoin.visibility = View.VISIBLE
-//                idTvHead.visibility = View.VISIBLE
-                idEditCode.visibility = View.VISIBLE
-                idPBLoading.visibility = View.GONE
+                binding.idBtnCreate.visibility = View.VISIBLE
+                binding.idBtnJoin.visibility = View.VISIBLE
+                binding.idEditCode.visibility = View.VISIBLE
+                binding.idPBLoading.visibility = View.GONE
                 Toast.makeText(this, "Please enter a valid code", Toast.LENGTH_SHORT).show()
             }
         }
-        idBtnJoin.setOnClickListener {
+        binding.idBtnJoin.setOnClickListener {
             code = "null"
             codeFound = false
             checkTemp = true
             keyValue = "null"
-            code = idEditCode.text.toString()
+            code = binding.idEditCode.text.toString()
             if (code != "null" && code != "") {
-                idBtnCreate.visibility = View.GONE
-                idBtnJoin.visibility = View.GONE
-//                idTvHead.visibility = View.GONE
-                idEditCode.visibility = View.GONE
-                idPBLoading.visibility = View.VISIBLE
+                binding.idBtnCreate.visibility = View.GONE
+                binding.idBtnJoin.visibility = View.GONE
+                binding.idEditCode.visibility = View.GONE
+                binding.idPBLoading.visibility = View.VISIBLE
 
                 isCodeMaker = false
                 FirebaseDatabase.getInstance().reference.child("codes")
@@ -102,17 +100,15 @@ class OnlineCodeGeneratorActivity : AppCompatActivity() {
                                 if (data==true){
                                     codeFound=true
                                     accepted()
-                                    idBtnCreate.visibility = View.VISIBLE
-                                    idBtnJoin.visibility = View.VISIBLE
-//                                    idTvHead.visibility = View.VISIBLE
-                                    idEditCode.visibility = View.VISIBLE
-                                    idPBLoading.visibility = View.GONE
+                                    binding.idBtnCreate.visibility = View.VISIBLE
+                                    binding.idBtnJoin.visibility = View.VISIBLE
+                                    binding.idEditCode.visibility = View.VISIBLE
+                                    binding.idPBLoading.visibility = View.GONE
                                 }else{
-                                    idBtnCreate.visibility = View.VISIBLE
-                                    idBtnJoin.visibility = View.VISIBLE
-//                                    idTvHead.visibility = View.VISIBLE
-                                    idEditCode.visibility = View.VISIBLE
-                                    idPBLoading.visibility = View.GONE
+                                    binding.idBtnCreate.visibility = View.VISIBLE
+                                    binding.idBtnJoin.visibility = View.VISIBLE
+                                    binding.idEditCode.visibility = View.VISIBLE
+                                    binding.idPBLoading.visibility = View.GONE
                                     Toast.makeText(this@OnlineCodeGeneratorActivity, "Invalid Code", Toast.LENGTH_SHORT).show()
                                 }
                             },2000)
@@ -132,11 +128,10 @@ class OnlineCodeGeneratorActivity : AppCompatActivity() {
 
     fun accepted() {
         startActivity(Intent(this, OnlineMultiPlayerGameActivity::class.java))
-        idBtnCreate.visibility = View.VISIBLE
-        idBtnJoin.visibility = View.VISIBLE
-        idEditCode.visibility = View.VISIBLE
-//        idTvHead.visibility = View.VISIBLE
-        idPBLoading.visibility = View.GONE
+        binding.idBtnCreate.visibility = View.VISIBLE
+        binding.idBtnJoin.visibility = View.VISIBLE
+        binding.idEditCode.visibility = View.VISIBLE
+        binding.idPBLoading.visibility = View.GONE
     }
 
     fun isValueAvaliable(snapshot: DataSnapshot, code: String): Boolean {
